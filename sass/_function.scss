@@ -1,0 +1,109 @@
+@use 'sass:map';
+@use "sass:math";
+
+/// clampの計算
+
+
+/// ベースフォントサイズはここで指定する
+$base-font-size: 16;
+
+/// ビューポートはここで指定する
+$breakpoints: (
+  'sm': 320, // 最小値
+  'md': 768, // 真ん中
+  'lg': 1024 // 最大値
+);
+
+/// strip-unit
+/// 単位を削除する関数
+@function strip-unit($num) {
+  @return math.div($num, ($num * 0 + 1));
+}
+
+/// divide-root
+/// ルートの割り算をする関数
+@function divide-root($px) {
+  @return math.div(strip-unit($px), $base-font-size);
+}
+
+/// px
+/// px計算する関数
+@function px($px) {
+  @return $px * 1px;
+}
+
+/// rem
+/// rem計算する関数
+@function rem($px) {
+  @return divide-root($px) * 1rem;
+}
+
+/// fs
+ /// 最小値と最大値のピクセル値とレスポンシブビューポート値の組み合わせで計算された値をclampで計算する関数
+ /// @link https://firstlayout.net/fluidly-font-size-created-with-sass-and-clamp/
+ /// @link https://min-max-calculator.9elements.com/
+ /// @param {number} $min-size - 最小値
+ /// @param {number} $max-size - 最大値
+ /// @param {string} $size: - 基準となる画面サイズ
+ /// @param {string} $unit: - 単位
+ /// @return {number} - 計算された値
+ /// @example scss
+/// .hoge {
+///    font-size: fs(24, 60, 'lg', 'px');
+/// }
+/// @example css
+/// .hoge {
+///   font-size: clamp(24px, 0.4772727273rem + 5.1136363636vw, 60px);
+/// }
+ ///
+@function fs($min-size, $max-size, $size: 'md', $unit: 'rem') {
+  $min-unit: if($unit == 'px', px($min-size), rem($min-size));
+  $max-unit: if($unit == 'px', px($max-size), rem($max-size));
+  $min-num: divide-root($min-size);
+  $max-num: divide-root($max-size);
+  $min-breakpoint: divide-root(map.get($breakpoints, 'sm'));
+  $max-breakpoint: if($size == 'lg', divide-root(map.get($breakpoints, 'lg')), divide-root(map.get($breakpoints, 'md')));
+  $slope: math.div(($max-num - $min-num), ($max-breakpoint - $min-breakpoint));
+  $calc-rem: ($min-breakpoint * -1 * $slope + $min-num) * 1rem;
+  $calc-vw: ($slope * 100) * 1vw;
+  @return clamp($min-unit, $calc-rem + $calc-vw, $max-unit);
+}
+
+/// Lh
+/// ラインハイトの上下の余白を相殺するmixin
+/// @desc - ラインハイトの上下の余白を相殺。
+/// @link https://moshashugyo.com/media/line-height-space
+/// @param    {Number} $line-height - ラインハイトの値。
+/// @example scss
+/// .lh {
+///   @include lh(2);
+/// }
+/// @example css
+/// .lh::before, .lh::after {
+///   content: "";
+///   display: block;
+///   height: 0;
+///   width: 0;
+/// }
+/// .lh::before {
+///   margin-top: calc((1 - 2) * 0.5em);
+/// }
+/// .lh::after {
+///   margin-bottom: calc((1 - 2) * 0.5em);
+/// }
+///
+@mixin lh($line-height) {
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+  }
+  &::before {
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+  &::after {
+    margin-bottom: calc((1 - #{$line-height}) * 0.5em);
+  }
+}

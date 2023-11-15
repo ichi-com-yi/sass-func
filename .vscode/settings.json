@@ -1,0 +1,18 @@
+{
+	/** Live Sass Compiler */
+  "liveSassCompile.settings.autoprefix": ["last 2 versions", "not dead", "not IE 11"], //のAutoprefixer設定
+  "liveSassCompile.settings.excludeList": [
+    //除外リスト
+    "/**/node_modules/**", // node_modulesファイルを除外
+    "/.vscode/**" // .vscodeファイルを除外
+  ],
+  "liveSassCompile.settings.generateMap": false, //mapファイルを出すか（true）
+  "liveSassCompile.settings.formats": [
+    //出力の設定
+    {
+      "format": "expanded", // フォーマットルール
+      "extensionName": ".css" // コンパイルされたファイルの拡張子
+      "savePath": "/css" // 保存場所のパス
+    }
+  ]
+}

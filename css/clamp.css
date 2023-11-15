@@ -1,0 +1,11 @@
+.rem1 {
+  font-size: clamp(1.5rem, -0.1071428571rem + 8.0357142857vw, 3.75rem);
+}
+
+.rem2 {
+  font-size: clamp(1.5rem, -0.1071428571rem + 8.0357142857vw, 3.75rem);
+}
+
+.px {
+  font-size: clamp(24px, 0.4772727273rem + 5.1136363636vw, 60px);
+}

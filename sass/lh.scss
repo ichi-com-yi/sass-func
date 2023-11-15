@@ -1,0 +1,5 @@
+@use 'function' as *;
+
+.hoge {
+  @include lh(1.75);
+}
