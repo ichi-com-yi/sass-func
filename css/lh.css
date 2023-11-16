@@ -10,7 +10,3 @@
 .hoge::after {
   margin-bottom: calc((1 - 1.75) * 0.5em);
 }
-
-.fuga {
-  line-height: lh(1.75);
-}

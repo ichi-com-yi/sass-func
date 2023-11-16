@@ -53,7 +53,7 @@ $breakpoints: (
 /// }
 /// @example css
 /// .hoge {
-///   font-size: clamp(24px, 0.4772727273rem + 5.1136363636vw, 60px);
+///    font-size: clamp(24px, 7.6363636364px + 5.1136363636vw, 60px);
 /// }
  ///
 @function fs($min-size, $max-size, $size: 'md', $unit: 'rem') {
@@ -65,8 +65,13 @@ $breakpoints: (
   $max-breakpoint: if($size == 'lg', divide-root(map.get($breakpoints, 'lg')), divide-root(map.get($breakpoints, 'md')));
   $slope: math.div(($max-num - $min-num), ($max-breakpoint - $min-breakpoint));
   $calc-rem: ($min-breakpoint * -1 * $slope + $min-num) * 1rem;
+  $calc-px: ($min-breakpoint * -1 * $slope + $min-num) * $base-font-size * 1px;
   $calc-vw: ($slope * 100) * 1vw;
-  @return clamp($min-unit, $calc-rem + $calc-vw, $max-unit);
+  @if $unit == 'px' {
+    @return clamp($min-unit, $calc-px + $calc-vw, $max-unit);
+  } @else {
+    @return clamp($min-unit, $calc-rem + $calc-vw, $max-unit);
+  }
 }
 
 /// Lh

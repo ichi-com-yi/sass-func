@@ -1,15 +1,22 @@
 @use 'function' as *;
 
-.rem1 {
-  font-size: fs(24, 60, 'md', 'rem');
-}
-
 // 省略
 // 標準で md rem が指定されているので、省略可能
-.rem2 {
+.rem {
   font-size: fs(24, 60);
 }
 
+// px指定
 .px {
+  font-size: fs(24, 60, 'md', 'px');
+}
+
+// rem指定で最大幅lgを指定（remは省略可）
+.rem-lg {
+  font-size: fs(24, 60, 'lg');
+}
+
+// px指定で最大幅lgを指定
+.px-lg {
   font-size: fs(24, 60, 'lg', 'px');
 }
