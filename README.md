@@ -34,7 +34,7 @@ scssの機能を利用してエディター（vscode）で関数やmixinで値�
 ## 使用方法
 - ダウンロードしたsassディレクトリ配下の`clamp.scss`と`lh.scss`を参考にしてください。  
 - `_function.scss`に関数やmixinを記述しています。
-- 関数 fs はclampを計算し mixin lh はラインハイトの上下の余白を相殺　します。
+- 関数 fs はclampを計算し mixin lh はラインハイトの上下の余白を相殺します。
 - 新たにscssファイルを追加する場合はsassディレクトリ配下にscssファイルを追加して使用してください。  
 ※その場合ファイルの先頭に`@use 'function' as *;`の記述をお願いします。  
 （`_function.scss`の変数や関数を使用するため）
