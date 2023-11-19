@@ -20,11 +20,11 @@ scssの機能を利用してエディター（vscode）で関数やmixinで値�
   - `settings.json`  vscodeの設定ファイル
 - `css`              cssファイルが収められたディレクトリ
   - `clamp.css`      関数 fs を記述したscssファイルをコンパイルしたcssファイル
-  - ` lh.css`        関数 lh を記述したscssファイルをコンパイルしたcssファイル
+  - ` lh.css`        mixin lh を記述したscssファイルをコンパイルしたcssファイル
 - `sass`             scssファイルが収められたディレクトリ
   - `_function.scss` 関数・mixinの設定ファイル
   - `clamp.scss`     関数 fs を記述したファイル
-  - `lh.scss`        関数 lh を記述したファイル
+  - `lh.scss`        mixin lh を記述したファイル
 - `.editorconfig`    EditorConfigの設定ファイル
 - `README.md`        説明などを記載
 
