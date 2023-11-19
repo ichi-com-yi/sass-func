@@ -16,13 +16,17 @@ scssの機能を利用してエディター（vscode）で関数やmixinで値�
 ├── .editorconfig
 └── README.md
 ```
-- `.vscode` vscodeの設定ファイルなどが収められたディレクトリ
-  - `settings.json` vscodeの設定ファイル
-- `css` cssファイルが収められたディレクトリ
-- `sass` scssファイルが収められたディレクトリ
-  - `◯◯.scss` 追加するscssファイル
-- `.editorconfig` EditorConfigの設定ファイル
-- `README.md` 説明などを記載
+- `.vscode`          vscodeの設定ファイルなどが収められたディレクトリ
+  - `settings.json`  vscodeの設定ファイル
+- `css`              cssファイルが収められたディレクトリ
+  - `clamp.css`      関数 fs を記述したscssファイルをコンパイルしたcssファイル
+  - ` lh.css`        関数 lh を記述したscssファイルをコンパイルしたcssファイル
+- `sass`             scssファイルが収められたディレクトリ
+  - `_function.scss` 関数・mixinの設定ファイル
+  - `clamp.scss`     関数 fs を記述したファイル
+  - `lh.scss`        関数 lh を記述したファイル
+- `.editorconfig`    EditorConfigの設定ファイル
+- `README.md`        説明などを記載
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -35,15 +39,15 @@ scssの機能を利用してエディター（vscode）で関数やmixinで値�
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 ## 使用方法
-- ダウンロードしたsassディレクトリ配下の`clamp.scss`と`lh.scss`を参考にしてください。  
-- `_function.scss`に関数やmixinを記述しています。
-- 関数 fs はclampを計算し mixin lh はラインハイトの上下の余白を相殺します。
+- ダウンロードしたsassディレクトリ配下の`clamp.scss`と`lh.scss`を参考にしてください。
+- 関数やmixinは`_function.scss`を参考にしてください。
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 ## 説明
-- sassディレクトリ配下に作成した◯◯.scssと同じ名前もcssファイルがcssディレクトリ配下にコンパイルされた状態で作成されます。  
-（sassディレクトリ配下のscssファイルの箇所がややこしくて、申し訳ないです）  
+- 関数 fs はclampを計算し mixin lh はラインハイトの上下の余白を相殺します。
+- sassディレクトリ配下に作成した◯◯.scssと同じ名前もcssファイルがcssディレクトリ配下にコンパイルされた状態で作成されます。
+（sassディレクトリ配下のscssファイルの箇所がややこしくて、申し訳ないです）
 - コンパイルする場所やベンダープレフィックスを変更したいなどありましたら、`.vscode`ディレクトリ配下の`settings.json`を編集してください。
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
